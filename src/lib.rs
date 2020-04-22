@@ -21,67 +21,67 @@ pub mod parsers {
     }
 
     pub fn parse_cli(i: &str) -> IResult<&str, &str>{
-        preceded(tag("|cli="), is_not("|")) (i.trim())
+        preceded(tag("|cli="), is_not("|")) (i)
     }
 
     pub fn parse_srv(i: &str) -> IResult<&str, &str>{
-        preceded(tag("|srv="), is_not("|")) (i.trim())
+        preceded(tag("|srv="), is_not("|")) (i)
     }
 
     pub fn parse_subj(i: &str) -> IResult<&str, &str>{
-        preceded(tag("|subj="), is_not("|")) (i.trim())
+        preceded(tag("|subj="), is_not("|")) (i)
     }
 
     pub fn parse_os(i: &str) -> IResult<&str, &str>{
-        preceded(tag("|os="), is_not("|")) (i.trim())
+        preceded(tag("|os="), is_not("|")) (i)
     }
 
     pub fn parse_dist(i: &str) -> IResult<&str, &str>{
-        preceded(tag("|dist="), is_not("|")) (i.trim())
+        preceded(tag("|dist="), is_not("|")) (i)
     }
 
     pub fn parse_params(i: &str) -> IResult<&str, &str>{
-        preceded(tag("|params="), is_not("|")) (i.trim())
+        preceded(tag("|params="), is_not("|")) (i)
     }
 
     pub fn parse_uptime(i: &str) -> IResult<&str, &str>{
-        preceded(tag("|uptime="), is_not("|")) (i.trim())
+        preceded(tag("|uptime="), is_not("|")) (i)
     }
 
     pub fn parse_link(i: &str) -> IResult<&str, &str>{
-        preceded(tag("|link="), is_not("|")) (i.trim())
+        preceded(tag("|link="), is_not("|")) (i)
     }
 
     pub fn parse_reason(i: &str) -> IResult<&str, &str>{
-        preceded(tag("|reason="), is_not("|")) (i.trim())
+        preceded(tag("|reason="), is_not("|")) (i)
     }
 
     pub fn parse_app(i: &str) -> IResult<&str, &str>{
-        preceded(tag("|app="), is_not("|")) (i.trim())
+        preceded(tag("|app="), is_not("|")) (i)
     }
 
     pub fn parse_lang(i: &str) -> IResult<&str, &str>{
-        preceded(tag("|lang="), is_not("|")) (i.trim())
+        preceded(tag("|lang="), is_not("|")) (i)
     }
 
     pub fn parse_raw_mtu(i: &str) -> IResult<&str, &str>{
-        preceded(tag("|raw_mtu="), is_not("")) (i.trim())
+        preceded(tag("|raw_mtu="), is_not("")) (i)
     }
 
     pub fn parse_raw_freq(i: &str) -> IResult<&str, &str>{
-        preceded(tag("|raw_freq="), is_not("")) (i.trim())
+        preceded(tag("|raw_freq="), is_not("")) (i)
     }
 
     pub fn parse_raw_sig(i: &str) -> IResult<&str, &str>{
-        preceded(tag("|raw_sig="), is_not("")) (i.trim())
+        preceded(tag("|raw_sig="), is_not("")) (i)
     }
 
     pub fn parse_raw_hits(i: &str) -> IResult<&str, &str>{
-        preceded(tag("|raw_hits="), is_not("")) (i.trim())
+        preceded(tag("|raw_hits="), is_not("")) (i)
     }
 
     pub fn unparsed(i: &str) -> IResult<&str, &str> {
-        rest::<_,(_, ErrorKind)>(i)
+        rest(i)
     }
 
     pub fn parse_common(i: &str) -> IResult<&str, (&str, &str)> {
