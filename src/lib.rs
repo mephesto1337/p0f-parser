@@ -12,10 +12,6 @@ pub mod parsers {
     use nom::character::complete::*;
     use nom::sequence::*;
 
-    pub fn parse_kv<'a>(i: &'a str, opentag: &'a str) -> IResult<&'a str, &'a str> {
-        preceded(tag(opentag), is_not("|")) (i.trim())
-    }
-
     pub fn parse_date(i: &str) -> IResult<&str, &str> {
             delimited(char('['), is_not("]"), char(']'))(i)
     }
