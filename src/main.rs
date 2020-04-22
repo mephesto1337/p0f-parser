@@ -3,7 +3,7 @@ use p0f_parser::parsers::parse_line;
 use std::fs::File;
 use std::io::{BufRead, BufReader, Error};
 
-fn main() -> Result<(), Error>{
+fn main() -> Result<(), Error> {
     let path = "/var/tmp/p0f.log";
     let logfile = File::open(path)?;
     let reader = BufReader::new(logfile);
