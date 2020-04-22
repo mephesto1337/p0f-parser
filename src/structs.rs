@@ -1,0 +1,73 @@
+// Structs
+
+#[derive(Debug)]
+pub enum P0f {
+    Uptime {
+        date: String,
+        module: String,
+        client: String,
+        server: String,
+        subject: String,
+        uptime: String,
+        raw_freq: String },
+    Mtu {
+        date: String,
+        module: String,
+        client: String,
+        server: String,
+        subject: String,
+        link: String,
+        raw_mtu: String },
+    Syn {
+        date: String,
+        module: String,
+        client: String,
+        server: String,
+        subject: String,
+        os: String,
+        dist: String,
+        params: String,
+        raw_sig: String },
+    SynAck {
+        date: String,
+        module: String,
+        client: String,
+        server: String,
+        subject: String,
+        os: String,
+        dist: String,
+        params: String,
+        raw_sig: String },
+    HostChange {
+        date: String,
+        module: String,
+        client: String,
+        server: String,
+        subject: String,
+        reason: String,
+        raw_hits: String },
+    HttpRequest{
+        date: String,
+        module: String,
+        client: String,
+        server: String,
+        subject: String,
+        app: String,
+        lang: String,
+        params: String,
+        raw_sig: String },
+    HttpResponse{
+        date: String,
+        module: String,
+        client: String,
+        server: String,
+        subject: String,
+        app: String,
+        lang: String,
+        params: String,
+        raw_sig: String },
+    Unparsed {
+        date: String,
+        module: String,
+        remain: String },
+}
