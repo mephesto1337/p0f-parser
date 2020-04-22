@@ -6,7 +6,6 @@ use structs::*;
 pub mod parsers {
     use super::*;
     use nom::IResult;
-    use nom::error::ErrorKind;
     use nom::bytes::complete::*;
     use nom::combinator::*;
     use nom::character::complete::*;
