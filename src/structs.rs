@@ -1,10 +1,8 @@
-// Structs
+pub type DateTime = chrono::NaiveDateTime;
 
 #[derive(Debug)]
-pub enum P0f {
+pub enum P0fModule {
     Uptime {
-        date: String,
-        module: String,
         client: String,
         server: String,
         subject: String,
@@ -12,17 +10,13 @@ pub enum P0f {
         raw_freq: String,
     },
     Mtu {
-        date: String,
-        module: String,
         client: String,
         server: String,
         subject: String,
         link: String,
-        raw_mtu: String,
+        raw_mtu: usize,
     },
     Syn {
-        date: String,
-        module: String,
         client: String,
         server: String,
         subject: String,
@@ -32,8 +26,6 @@ pub enum P0f {
         raw_sig: String,
     },
     SynAck {
-        date: String,
-        module: String,
         client: String,
         server: String,
         subject: String,
@@ -43,8 +35,6 @@ pub enum P0f {
         raw_sig: String,
     },
     HostChange {
-        date: String,
-        module: String,
         client: String,
         server: String,
         subject: String,
@@ -52,8 +42,6 @@ pub enum P0f {
         raw_hits: String,
     },
     HttpRequest {
-        date: String,
-        module: String,
         client: String,
         server: String,
         subject: String,
@@ -63,8 +51,6 @@ pub enum P0f {
         raw_sig: String,
     },
     HttpResponse {
-        date: String,
-        module: String,
         client: String,
         server: String,
         subject: String,
@@ -74,8 +60,13 @@ pub enum P0f {
         raw_sig: String,
     },
     Unparsed {
-        date: String,
         module: String,
         remain: String,
     },
+}
+
+#[derive(Debug)]
+pub struct P0f {
+    pub date: DateTime,
+    pub module: P0fModule,
 }
