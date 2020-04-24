@@ -1,0 +1,93 @@
+[2020/04/17 11:39:14] mod=syn|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/47252|srv=2a00:1450:4007:808:0:0:0:200e/443|subj=cli|os=???|dist=0|params=none|raw_sig=6:64+0:0:1420:mss*46,10:mss,sok,ts,nop,ws:flow:0
+[2020/04/17 11:39:14] mod=mtu|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/47252|srv=2a00:1450:4007:808:0:0:0:200e/443|subj=cli|link=IPIP or SIT|raw_mtu=1480
+[2020/04/17 11:39:14] mod=syn|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/47254|srv=2a00:1450:4007:808:0:0:0:200e/443|subj=cli|os=???|dist=0|params=none|raw_sig=6:64+0:0:1420:mss*46,10:mss,sok,ts,nop,ws:flow:0
+[2020/04/17 11:39:14] mod=mtu|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/47254|srv=2a00:1450:4007:808:0:0:0:200e/443|subj=cli|link=IPIP or SIT|raw_mtu=1480
+[2020/04/17 11:39:14] mod=syn+ack|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/47252|srv=2a00:1450:4007:808:0:0:0:200e/443|subj=srv|os=???|dist=5|params=none|raw_sig=6:123+5:0:1360:65535,8:mss,sok,ts,nop,ws:flow:0
+[2020/04/17 11:39:14] mod=mtu|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/47252|srv=2a00:1450:4007:808:0:0:0:200e/443|subj=srv|link=generic tunnel or VPN|raw_mtu=1420
+[2020/04/17 11:39:14] mod=uptime|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/47252|srv=2a00:1450:4007:808:0:0:0:200e/443|subj=cli|uptime=19 days 21 hrs 51 min (modulo 49 days)|raw_freq=1000.00 Hz
+[2020/04/17 11:39:14] mod=syn+ack|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/47254|srv=2a00:1450:4007:808:0:0:0:200e/443|subj=srv|os=???|dist=5|params=none|raw_sig=6:123+5:0:1360:65535,8:mss,sok,ts,nop,ws:flow:0
+[2020/04/17 11:39:14] mod=mtu|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/47254|srv=2a00:1450:4007:808:0:0:0:200e/443|subj=srv|link=generic tunnel or VPN|raw_mtu=1420
+[2020/04/17 11:39:14] mod=uptime|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/47254|srv=2a00:1450:4007:808:0:0:0:200e/443|subj=cli|uptime=19 days 21 hrs 51 min (modulo 49 days)|raw_freq=1000.00 Hz
+[2020/04/17 11:39:15] mod=syn|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/59266|srv=2a00:1450:4007:817:0:0:0:2005/443|subj=cli|os=???|dist=0|params=none|raw_sig=6:64+0:0:1420:mss*46,10:mss,sok,ts,nop,ws:flow:0
+[2020/04/17 11:39:15] mod=mtu|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/59266|srv=2a00:1450:4007:817:0:0:0:2005/443|subj=cli|link=IPIP or SIT|raw_mtu=1480
+[2020/04/17 11:39:15] mod=syn|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/59268|srv=2a00:1450:4007:817:0:0:0:2005/443|subj=cli|os=???|dist=0|params=none|raw_sig=6:64+0:0:1420:mss*46,10:mss,sok,ts,nop,ws:flow:0
+[2020/04/17 11:39:15] mod=mtu|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/59268|srv=2a00:1450:4007:817:0:0:0:2005/443|subj=cli|link=IPIP or SIT|raw_mtu=1480
+[2020/04/17 11:39:15] mod=syn+ack|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/59266|srv=2a00:1450:4007:817:0:0:0:2005/443|subj=srv|os=???|dist=5|params=none|raw_sig=6:123+5:0:1360:65535,8:mss,sok,ts,nop,ws:flow:0
+[2020/04/17 11:39:15] mod=mtu|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/59266|srv=2a00:1450:4007:817:0:0:0:2005/443|subj=srv|link=generic tunnel or VPN|raw_mtu=1420
+[2020/04/17 11:39:15] mod=uptime|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/59266|srv=2a00:1450:4007:817:0:0:0:2005/443|subj=cli|uptime=8 days 1 hrs 50 min (modulo 49 days)|raw_freq=1000.00 Hz
+[2020/04/17 11:39:15] mod=syn+ack|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/59268|srv=2a00:1450:4007:817:0:0:0:2005/443|subj=srv|os=???|dist=5|params=none|raw_sig=6:123+5:0:1360:65535,8:mss,sok,ts,nop,ws:flow:0
+[2020/04/17 11:39:15] mod=mtu|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/59268|srv=2a00:1450:4007:817:0:0:0:2005/443|subj=srv|link=generic tunnel or VPN|raw_mtu=1420
+[2020/04/17 11:39:15] mod=uptime|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/59268|srv=2a00:1450:4007:817:0:0:0:2005/443|subj=cli|uptime=8 days 1 hrs 50 min (modulo 49 days)|raw_freq=1000.00 Hz
+[2020/04/17 11:39:15] mod=syn|cli=192.168.0.34/35822|srv=173.194.76.189/443|subj=cli|os=Linux 2.2.x-3.x|dist=0|params=generic|raw_sig=4:64+0:0:1460:mss*44,10:mss,sok,ts,nop,ws:df,id+:0
+[2020/04/17 11:39:15] mod=mtu|cli=192.168.0.34/35822|srv=173.194.76.189/443|subj=cli|link=Ethernet or modem|raw_mtu=1500
+[2020/04/17 11:39:16] mod=syn+ack|cli=192.168.0.34/35822|srv=173.194.76.189/443|subj=srv|os=???|dist=22|params=none|raw_sig=4:106+22:0:1430:mss*44,8:mss,sok,ts,nop,ws::0
+[2020/04/17 11:39:16] mod=mtu|cli=192.168.0.34/35822|srv=173.194.76.189/443|subj=srv|link=Google|raw_mtu=1470
+[2020/04/17 11:39:16] mod=uptime|cli=192.168.0.34/35822|srv=173.194.76.189/443|subj=cli|uptime=45 days 21 hrs 2 min (modulo 49 days)|raw_freq=1000.00 Hz
+[2020/04/17 11:39:16] mod=syn|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/50968|srv=2a00:1450:4007:80c:0:0:0:200a/443|subj=cli|os=???|dist=0|params=none|raw_sig=6:64+0:0:1420:mss*46,10:mss,sok,ts,nop,ws:flow:0
+[2020/04/17 11:39:16] mod=host change|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/50968|srv=2a00:1450:4007:80c:0:0:0:200a/443|subj=cli|reason=tstamp port|raw_hits=0,1,1,1
+[2020/04/17 11:39:16] mod=mtu|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/50968|srv=2a00:1450:4007:80c:0:0:0:200a/443|subj=cli|link=IPIP or SIT|raw_mtu=1480
+[2020/04/17 11:39:16] mod=syn|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/60272|srv=2a00:1450:4007:805:0:0:0:200a/443|subj=cli|os=???|dist=0|params=none|raw_sig=6:64+0:0:1420:mss*46,10:mss,sok,ts,nop,ws:flow:0
+[2020/04/17 11:39:16] mod=mtu|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/60272|srv=2a00:1450:4007:805:0:0:0:200a/443|subj=cli|link=IPIP or SIT|raw_mtu=1480
+[2020/04/17 11:39:16] mod=syn+ack|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/50968|srv=2a00:1450:4007:80c:0:0:0:200a/443|subj=srv|os=???|dist=5|params=none|raw_sig=6:123+5:0:1360:65535,8:mss,sok,ts,nop,ws:flow:0
+[2020/04/17 11:39:16] mod=mtu|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/50968|srv=2a00:1450:4007:80c:0:0:0:200a/443|subj=srv|link=generic tunnel or VPN|raw_mtu=1420
+[2020/04/17 11:39:16] mod=syn+ack|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/60272|srv=2a00:1450:4007:805:0:0:0:200a/443|subj=srv|os=???|dist=5|params=none|raw_sig=6:123+5:0:1360:65535,8:mss,sok,ts,nop,ws:flow:0
+[2020/04/17 11:39:16] mod=mtu|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/60272|srv=2a00:1450:4007:805:0:0:0:200a/443|subj=srv|link=generic tunnel or VPN|raw_mtu=1420
+[2020/04/17 11:39:16] mod=uptime|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/60272|srv=2a00:1450:4007:805:0:0:0:200a/443|subj=cli|uptime=18 days 16 hrs 49 min (modulo 49 days)|raw_freq=1000.00 Hz
+[2020/04/17 11:39:38] mod=syn|cli=192.168.0.34/33368|srv=10.0.0.238/80|subj=cli|os=Linux 2.2.x-3.x|dist=0|params=generic|raw_sig=4:64+0:0:1460:mss*44,10:mss,sok,ts,nop,ws:df,id+:0
+[2020/04/17 11:39:38] mod=host change|cli=192.168.0.34/33368|srv=10.0.0.238/80|subj=cli|reason=tstamp port|raw_hits=0,1,1,1
+[2020/04/17 11:39:38] mod=mtu|cli=192.168.0.34/33368|srv=10.0.0.238/80|subj=cli|link=Ethernet or modem|raw_mtu=1500
+[2020/04/17 11:39:38] mod=syn+ack|cli=192.168.0.34/33368|srv=10.0.0.238/80|subj=srv|os=???|dist=9|params=none|raw_sig=4:55+9:0:1460:mss*20,7:mss,sok,ts,nop,ws:df:0
+[2020/04/17 11:39:38] mod=mtu|cli=192.168.0.34/33368|srv=10.0.0.238/80|subj=srv|link=Ethernet or modem|raw_mtu=1500
+[2020/04/17 11:39:38] mod=uptime|cli=192.168.0.34/33368|srv=10.0.0.238/80|subj=cli|uptime=48 days 5 hrs 59 min (modulo 49 days)|raw_freq=1000.00 Hz
+[2020/04/17 11:39:38] mod=http request|cli=192.168.0.34/33368|srv=10.0.0.238/80|subj=cli|app=???|lang=none|params=none|raw_sig=1:Host,User-Agent,Accept=[*/*]:Connection,Accept-Encoding,Accept-Language,Accept-Charset,Keep-Alive:curl/7.64.0
+[2020/04/17 11:39:38] mod=uptime|cli=192.168.0.34/33368|srv=10.0.0.238/80|subj=srv|uptime=165 days 22 hrs 19 min (modulo 198 days)|raw_freq=243.24 Hz
+[2020/04/17 11:39:38] mod=http response|cli=192.168.0.34/33368|srv=10.0.0.238/80|subj=srv|app=nginx 0.x|lang=none|params=dishonest|raw_sig=1:Server,Date,Content-Type,?Content-Length,Connection=[keep-alive],?Location:Keep-Alive,Accept-Ranges:nginx
+[2020/04/17 11:40:11] mod=syn|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/44332|srv=2a00:1450:4007:805:0:0:0:2003/443|subj=cli|os=???|dist=0|params=none|raw_sig=6:64+0:0:1420:mss*46,10:mss,sok,ts,nop,ws:flow:0
+[2020/04/17 11:40:11] mod=host change|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/44332|srv=2a00:1450:4007:805:0:0:0:2003/443|subj=cli|reason=tstamp port|raw_hits=0,2,2,2
+[2020/04/17 11:40:11] mod=mtu|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/44332|srv=2a00:1450:4007:805:0:0:0:2003/443|subj=cli|link=IPIP or SIT|raw_mtu=1480
+[2020/04/17 11:40:11] mod=syn+ack|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/44332|srv=2a00:1450:4007:805:0:0:0:2003/443|subj=srv|os=???|dist=5|params=none|raw_sig=6:123+5:0:1360:65535,8:mss,sok,ts,nop,ws:flow:0
+[2020/04/17 11:40:11] mod=mtu|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/44332|srv=2a00:1450:4007:805:0:0:0:2003/443|subj=srv|link=generic tunnel or VPN|raw_mtu=1420
+[2020/04/17 11:40:11] mod=uptime|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/44332|srv=2a00:1450:4007:805:0:0:0:2003/443|subj=cli|uptime=41 days 8 hrs 16 min (modulo 49 days)|raw_freq=1000.00 Hz
+[2020/04/17 11:40:24] mod=syn|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/60278|srv=2a00:1450:4007:805:0:0:0:200a/443|subj=cli|os=???|dist=0|params=none|raw_sig=6:64+0:0:1420:mss*46,10:mss,sok,ts,nop,ws:flow:0
+[2020/04/17 11:40:24] mod=mtu|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/60278|srv=2a00:1450:4007:805:0:0:0:200a/443|subj=cli|link=IPIP or SIT|raw_mtu=1480
+[2020/04/17 11:40:24] mod=syn+ack|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/60278|srv=2a00:1450:4007:805:0:0:0:200a/443|subj=srv|os=???|dist=5|params=none|raw_sig=6:123+5:0:1360:65535,8:mss,sok,ts,nop,ws:flow:0
+[2020/04/17 11:40:24] mod=mtu|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/60278|srv=2a00:1450:4007:805:0:0:0:200a/443|subj=srv|link=generic tunnel or VPN|raw_mtu=1420
+[2020/04/17 11:40:24] mod=uptime|cli=2a01:e34:ede0:e210:909b:1d40:367b:d854/60278|srv=2a00:1450:4007:805:0:0:0:200a/443|subj=cli|uptime=18 days 16 hrs 50 min (modulo 49 days)|raw_freq=1000.00 Hz
+[2020/04/17 11:40:27] mod=syn|cli=192.168.0.34/33374|srv=10.0.0.238/80|subj=cli|os=Linux 2.2.x-3.x|dist=0|params=generic|raw_sig=4:64+0:0:1460:mss*44,10:mss,sok,ts,nop,ws:df,id+:0
+[2020/04/17 11:40:27] mod=mtu|cli=192.168.0.34/33374|srv=10.0.0.238/80|subj=cli|link=Ethernet or modem|raw_mtu=1500
+[2020/04/17 11:40:27] mod=uptime|cli=192.168.0.34/33374|srv=10.0.0.238/80|subj=cli|uptime=48 days 6 hrs 0 min (modulo 49 days)|raw_freq=1000.00 Hz
+[2020/04/17 11:40:27] mod=syn+ack|cli=192.168.0.34/33374|srv=10.0.0.238/80|subj=srv|os=???|dist=9|params=none|raw_sig=4:55+9:0:1460:mss*20,7:mss,sok,ts,nop,ws:df:0
+[2020/04/17 11:40:27] mod=mtu|cli=192.168.0.34/33374|srv=10.0.0.238/80|subj=srv|link=Ethernet or modem|raw_mtu=1500
+[2020/04/17 11:40:27] mod=uptime|cli=192.168.0.34/33374|srv=10.0.0.238/80|subj=srv|uptime=165 days 22 hrs 19 min (modulo 198 days)|raw_freq=249.99 Hz
+[2020/04/17 11:40:27] mod=http request|cli=192.168.0.34/33374|srv=10.0.0.238/80|subj=cli|app=???|lang=none|params=none|raw_sig=1:Host,User-Agent,Accept-Encoding=[gzip, deflate],Accept=[*/*],Connection=[keep-alive]:Accept-Language,Accept-Charset,Keep-Alive:python-requests/2.21.0
+[2020/04/17 11:40:27] mod=http response|cli=192.168.0.34/33374|srv=10.0.0.238/80|subj=srv|app=nginx 0.x|lang=none|params=dishonest|raw_sig=1:Server,Date,Content-Type,?Content-Length,Connection=[keep-alive],?Location:Keep-Alive,Accept-Ranges:nginx
+[2020/04/17 11:40:27] mod=syn|cli=192.168.0.34/35356|srv=10.0.0.238/443|subj=cli|os=Linux 2.2.x-3.x|dist=0|params=generic|raw_sig=4:64+0:0:1460:mss*44,10:mss,sok,ts,nop,ws:df,id+:0
+[2020/04/17 11:40:27] mod=mtu|cli=192.168.0.34/35356|srv=10.0.0.238/443|subj=cli|link=Ethernet or modem|raw_mtu=1500
+[2020/04/17 11:40:27] mod=uptime|cli=192.168.0.34/35356|srv=10.0.0.238/443|subj=cli|uptime=48 days 6 hrs 0 min (modulo 49 days)|raw_freq=1000.00 Hz
+[2020/04/17 11:40:27] mod=syn+ack|cli=192.168.0.34/35356|srv=10.0.0.238/443|subj=srv|os=???|dist=9|params=none|raw_sig=4:55+9:0:1460:mss*20,7:mss,sok,ts,nop,ws:df:0
+[2020/04/17 11:40:27] mod=mtu|cli=192.168.0.34/35356|srv=10.0.0.238/443|subj=srv|link=Ethernet or modem|raw_mtu=1500
+[2020/04/17 11:40:27] mod=uptime|cli=192.168.0.34/35356|srv=10.0.0.238/443|subj=srv|uptime=165 days 22 hrs 19 min (modulo 198 days)|raw_freq=251.97 Hz
+[2020/04/17 11:40:58] mod=syn|cli=192.168.0.34/33378|srv=10.0.0.238/80|subj=cli|os=Linux 2.2.x-3.x|dist=0|params=generic|raw_sig=4:64+0:0:1460:mss*44,10:mss,sok,ts,nop,ws:df,id+:0
+[2020/04/17 11:40:58] mod=mtu|cli=192.168.0.34/33378|srv=10.0.0.238/80|subj=cli|link=Ethernet or modem|raw_mtu=1500
+[2020/04/17 11:40:58] mod=uptime|cli=192.168.0.34/33378|srv=10.0.0.238/80|subj=cli|uptime=48 days 6 hrs 1 min (modulo 49 days)|raw_freq=1000.00 Hz
+[2020/04/17 11:40:58] mod=syn+ack|cli=192.168.0.34/33378|srv=10.0.0.238/80|subj=srv|os=???|dist=9|params=none|raw_sig=4:55+9:0:1460:mss*20,7:mss,sok,ts,nop,ws:df:0
+[2020/04/17 11:40:58] mod=mtu|cli=192.168.0.34/33378|srv=10.0.0.238/80|subj=srv|link=Ethernet or modem|raw_mtu=1500
+[2020/04/17 11:40:58] mod=uptime|cli=192.168.0.34/33378|srv=10.0.0.238/80|subj=srv|uptime=165 days 22 hrs 20 min (modulo 198 days)|raw_freq=250.01 Hz
+[2020/04/17 11:40:58] mod=http request|cli=192.168.0.34/33378|srv=10.0.0.238/80|subj=cli|app=???|lang=none|params=none|raw_sig=1:Host,User-Agent,Accept-Encoding=[gzip, deflate],Accept=[*/*],Connection=[keep-alive]:Accept-Language,Accept-Charset,Keep-Alive:Firefox
+[2020/04/17 11:40:58] mod=http response|cli=192.168.0.34/33378|srv=10.0.0.238/80|subj=srv|app=nginx 0.x|lang=none|params=dishonest|raw_sig=1:Server,Date,Content-Type,?Content-Length,Connection=[keep-alive],?Location:Keep-Alive,Accept-Ranges:nginx
+[2020/04/17 11:40:58] mod=syn|cli=192.168.0.34/35360|srv=10.0.0.238/443|subj=cli|os=Linux 2.2.x-3.x|dist=0|params=generic|raw_sig=4:64+0:0:1460:mss*44,10:mss,sok,ts,nop,ws:df,id+:0
+[2020/04/17 11:40:58] mod=mtu|cli=192.168.0.34/35360|srv=10.0.0.238/443|subj=cli|link=Ethernet or modem|raw_mtu=1500
+[2020/04/17 11:40:58] mod=uptime|cli=192.168.0.34/35360|srv=10.0.0.238/443|subj=cli|uptime=48 days 6 hrs 1 min (modulo 49 days)|raw_freq=1000.00 Hz
+[2020/04/17 11:40:58] mod=syn+ack|cli=192.168.0.34/35360|srv=10.0.0.238/443|subj=srv|os=???|dist=9|params=none|raw_sig=4:55+9:0:1460:mss*20,7:mss,sok,ts,nop,ws:df:0
+[2020/04/17 11:40:58] mod=mtu|cli=192.168.0.34/35360|srv=10.0.0.238/443|subj=srv|link=Ethernet or modem|raw_mtu=1500
+[2020/04/17 11:40:58] mod=uptime|cli=192.168.0.34/35360|srv=10.0.0.238/443|subj=srv|uptime=165 days 22 hrs 20 min (modulo 198 days)|raw_freq=244.90 Hz
+[2020/04/20 10:29:06] mod=syn|cli=192.168.0.34/50100|srv=10.0.0.238/443|subj=cli|os=Linux 2.2.x-3.x|dist=0|params=generic|raw_sig=4:64+0:0:1460:mss*44,10:mss,sok,ts,nop,ws:df,id+:0
+[2020/04/20 10:29:06] mod=mtu|cli=192.168.0.34/50100|srv=10.0.0.238/443|subj=cli|link=Ethernet or modem|raw_mtu=1500
+[2020/04/20 10:29:06] mod=syn+ack|cli=192.168.0.34/50100|srv=10.0.0.238/443|subj=srv|os=???|dist=9|params=none|raw_sig=4:55+9:0:1460:mss*20,7:mss,sok,ts,nop,ws:df:0
+[2020/04/20 10:29:06] mod=mtu|cli=192.168.0.34/50100|srv=10.0.0.238/443|subj=srv|link=Ethernet or modem|raw_mtu=1500
+[2020/04/20 10:29:06] mod=uptime|cli=192.168.0.34/50100|srv=10.0.0.238/443|subj=cli|uptime=46 days 23 hrs 33 min (modulo 49 days)|raw_freq=1000.00 Hz
+[2020/04/20 10:29:36] mod=syn|cli=192.168.0.34/50104|srv=10.0.0.238/443|subj=cli|os=Linux 2.2.x-3.x|dist=0|params=generic|raw_sig=4:64+0:0:1460:mss*44,10:mss,sok,ts,nop,ws:df,id+:0
+[2020/04/20 10:29:36] mod=mtu|cli=192.168.0.34/50104|srv=10.0.0.238/443|subj=cli|link=Ethernet or modem|raw_mtu=1500
+[2020/04/20 10:29:36] mod=syn+ack|cli=192.168.0.34/50104|srv=10.0.0.238/443|subj=srv|os=???|dist=9|params=none|raw_sig=4:55+9:0:1460:mss*20,7:mss,sok,ts,nop,ws:df:0
+[2020/04/20 10:29:36] mod=mtu|cli=192.168.0.34/50104|srv=10.0.0.238/443|subj=srv|link=Ethernet or modem|raw_mtu=1500
+[2020/04/20 10:29:36] mod=uptime|cli=192.168.0.34/50104|srv=10.0.0.238/443|subj=cli|uptime=46 days 23 hrs 33 min (modulo 49 days)|raw_freq=1000.00 Hz
