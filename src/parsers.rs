@@ -1,10 +1,12 @@
-use nom::bytes::complete::{is_not, tag};
-use nom::character::complete::char;
+use std::net::IpAddr;
+
+use nom::bytes::complete::{is_not, tag, take_until};
+use nom::character::complete::{char, digit1};
 use nom::combinator::map_res;
 use nom::sequence::{delimited, preceded, tuple};
 
 use crate::error::Error;
-use crate::structs::{DateTime, P0f, P0fModule};
+use crate::structs::{DateTime, Endpoint, P0f, P0fModule, Subject};
 
 type IResult<I, O> = nom::IResult<I, O, Error<I>>;
 
@@ -18,122 +20,131 @@ fn parse_mod(i: &str) -> IResult<&str, &str> {
     preceded(tag("mod="), is_not("|"))(i.trim())
 }
 
-fn parse_cli(i: &str) -> IResult<&str, &str> {
-    preceded(tag("|cli="), is_not("|"))(i)
+fn parse_tag<'i>(i: &'i str, stag: &str) -> IResult<&'i str, &'i str> {
+    let separator = "|";
+    preceded(
+        tuple((tag(separator), tag(stag), tag("="))),
+        is_not(separator),
+    )(i)
 }
 
-fn parse_srv(i: &str) -> IResult<&str, &str> {
-    preceded(tag("|srv="), is_not("|"))(i)
+fn parse_cli(i: &str) -> IResult<&str, Endpoint> {
+    let (rest, cli) = parse_tag(i, "cli")?;
+    match parse_endpoint(cli) {
+        Ok((_, ep)) => Ok((rest, ep)),
+        Err(e) => Err(e),
+    }
 }
 
-fn parse_subj(i: &str) -> IResult<&str, &str> {
-    preceded(tag("|subj="), is_not("|"))(i)
+fn parse_srv(i: &str) -> IResult<&str, Endpoint> {
+    let (rest, cli) = preceded(tag("|srv="), is_not("|"))(i)?;
+    match parse_endpoint(cli) {
+        Ok((_, ep)) => Ok((rest, ep)),
+        Err(e) => Err(e),
+    }
+}
+
+fn parse_subj(i: &str) -> IResult<&str, Subject> {
+    let (rest, subj) = parse_tag(i, "subj")?;
+    match subj {
+        "cli" => Ok((rest, Subject::Client)),
+        "srv" => Ok((rest, Subject::Server)),
+        _ => Err(Error::make_nom_error(
+            &i[6..],
+            nom::error::ErrorKind::NoneOf,
+        )),
+    }
 }
 
 fn parse_os(i: &str) -> IResult<&str, &str> {
-    preceded(tag("|os="), is_not("|"))(i)
+    parse_tag(i, "os")
 }
 
 fn parse_dist(i: &str) -> IResult<&str, &str> {
-    preceded(tag("|dist="), is_not("|"))(i)
+    parse_tag(i, "dist")
 }
 
 fn parse_params(i: &str) -> IResult<&str, &str> {
-    preceded(tag("|params="), is_not("|"))(i)
+    parse_tag(i, "params")
 }
 
 fn parse_uptime(i: &str) -> IResult<&str, &str> {
-    preceded(tag("|uptime="), is_not("|"))(i)
+    parse_tag(i, "uptime")
 }
 
 fn parse_link(i: &str) -> IResult<&str, &str> {
-    preceded(tag("|link="), is_not("|"))(i)
+    parse_tag(i, "link")
 }
 
 fn parse_reason(i: &str) -> IResult<&str, &str> {
-    preceded(tag("|reason="), is_not("|"))(i)
+    parse_tag(i, "reason")
 }
 
 fn parse_app(i: &str) -> IResult<&str, &str> {
-    preceded(tag("|app="), is_not("|"))(i)
+    parse_tag(i, "app")
 }
 
 fn parse_lang(i: &str) -> IResult<&str, &str> {
-    preceded(tag("|lang="), is_not("|"))(i)
+    parse_tag(i, "lang")
 }
 
 fn parse_raw_mtu(i: &str) -> IResult<&str, usize> {
-    map_res(preceded(tag("|raw_mtu="), is_not("")), |s: &str| {
-        s.parse::<usize>()
-    })(i)
+    map_res(|i| parse_tag(i, "raw_mtu"), |s: &str| s.parse::<usize>())(i)
 }
 
 fn parse_raw_freq(i: &str) -> IResult<&str, &str> {
-    preceded(tag("|raw_freq="), is_not(""))(i)
+    parse_tag(i, "raw_freq")
 }
 
 fn parse_raw_sig(i: &str) -> IResult<&str, &str> {
-    preceded(tag("|raw_sig="), is_not(""))(i)
+    parse_tag(i, "raw_sig")
 }
 
 fn parse_raw_hits(i: &str) -> IResult<&str, &str> {
-    preceded(tag("|raw_hits="), is_not(""))(i)
+    parse_tag(i, "raw_hits")
+}
+
+fn parse_endpoint(i: &str) -> IResult<&str, Endpoint> {
+    let (rest, (addr, _sep, port)) = tuple((
+        map_res(take_until("/"), |s: &str| s.parse::<IpAddr>()),
+        tag("/"),
+        map_res(digit1, |s: &str| s.parse::<u16>()),
+    ))(i)?;
+
+    Ok((rest, Endpoint { addr, port }))
 }
 
 fn parse_p0f_uptime(i: &str) -> IResult<&str, P0fModule> {
-    let (rest, (client, server, subject, uptime, raw_freq)) = tuple((
-        parse_cli,
-        parse_srv,
-        parse_subj,
-        parse_uptime,
-        parse_raw_freq,
-    ))(i)?;
+    let (rest, (uptime, raw_freq)) = tuple((parse_uptime, parse_raw_freq))(i)?;
 
     Ok((
         rest,
         P0fModule::Uptime {
-            client: String::from(client),
-            server: String::from(server),
-            subject: String::from(subject),
             uptime: String::from(uptime),
             raw_freq: String::from(raw_freq),
         },
     ))
 }
 
-pub fn parse_p0f_mtu(i: &str) -> IResult<&str, P0fModule> {
-    let (rest, (client, server, subject, link, raw_mtu)) =
-        tuple((parse_cli, parse_srv, parse_subj, parse_link, parse_raw_mtu))(i)?;
+fn parse_p0f_mtu(i: &str) -> IResult<&str, P0fModule> {
+    let (rest, (link, raw_mtu)) = tuple((parse_link, parse_raw_mtu))(i)?;
 
     Ok((
         rest,
         P0fModule::Mtu {
-            client: String::from(client),
-            server: String::from(server),
-            subject: String::from(subject),
             link: String::from(link),
             raw_mtu,
         },
     ))
 }
 
-pub fn parse_p0f_syn(i: &str) -> IResult<&str, P0fModule> {
-    let (rest, (client, server, subject, os, dist, params, raw_sig)) = tuple((
-        parse_cli,
-        parse_srv,
-        parse_subj,
-        parse_os,
-        parse_dist,
-        parse_params,
-        parse_raw_sig,
-    ))(i)?;
+fn parse_p0f_syn(i: &str) -> IResult<&str, P0fModule> {
+    let (rest, (os, dist, params, raw_sig)) =
+        tuple((parse_os, parse_dist, parse_params, parse_raw_sig))(i)?;
 
     Ok((
         rest,
         P0fModule::Syn {
-            client: String::from(client),
-            server: String::from(server),
-            subject: String::from(subject),
             os: String::from(os),
             dist: String::from(dist),
             params: String::from(params),
@@ -142,23 +153,13 @@ pub fn parse_p0f_syn(i: &str) -> IResult<&str, P0fModule> {
     ))
 }
 
-pub fn parse_p0f_synack(i: &str) -> IResult<&str, P0fModule> {
-    let (rest, (client, server, subject, os, dist, params, raw_sig)) = tuple((
-        parse_cli,
-        parse_srv,
-        parse_subj,
-        parse_os,
-        parse_dist,
-        parse_params,
-        parse_raw_sig,
-    ))(i)?;
+fn parse_p0f_synack(i: &str) -> IResult<&str, P0fModule> {
+    let (rest, (os, dist, params, raw_sig)) =
+        tuple((parse_os, parse_dist, parse_params, parse_raw_sig))(i)?;
 
     Ok((
         rest,
         P0fModule::SynAck {
-            client: String::from(client),
-            server: String::from(server),
-            subject: String::from(subject),
             os: String::from(os),
             dist: String::from(dist),
             params: String::from(params),
@@ -167,44 +168,25 @@ pub fn parse_p0f_synack(i: &str) -> IResult<&str, P0fModule> {
     ))
 }
 
-pub fn parse_p0f_host_change(i: &str) -> IResult<&str, P0fModule> {
-    let (rest, (client, server, subject, reason, raw_hits)) = tuple((
-        parse_cli,
-        parse_srv,
-        parse_subj,
-        parse_reason,
-        parse_raw_hits,
-    ))(i)?;
+fn parse_p0f_host_change(i: &str) -> IResult<&str, P0fModule> {
+    let (rest, (reason, raw_hits)) = tuple((parse_reason, parse_raw_hits))(i)?;
 
     Ok((
         rest,
         P0fModule::HostChange {
-            client: String::from(client),
-            server: String::from(server),
-            subject: String::from(subject),
             reason: String::from(reason),
             raw_hits: String::from(raw_hits),
         },
     ))
 }
 
-pub fn parse_p0f_http_request(i: &str) -> IResult<&str, P0fModule> {
-    let (rest, (client, server, subject, app, lang, params, raw_sig)) = tuple((
-        parse_cli,
-        parse_srv,
-        parse_subj,
-        parse_app,
-        parse_lang,
-        parse_params,
-        parse_raw_sig,
-    ))(i)?;
+fn parse_p0f_http_request(i: &str) -> IResult<&str, P0fModule> {
+    let (rest, (app, lang, params, raw_sig)) =
+        tuple((parse_app, parse_lang, parse_params, parse_raw_sig))(i)?;
 
     Ok((
         rest,
         P0fModule::HttpResponse {
-            client: String::from(client),
-            server: String::from(server),
-            subject: String::from(subject),
             app: String::from(app),
             lang: String::from(lang),
             params: String::from(params),
@@ -213,23 +195,13 @@ pub fn parse_p0f_http_request(i: &str) -> IResult<&str, P0fModule> {
     ))
 }
 
-pub fn parse_p0f_http_response(i: &str) -> IResult<&str, P0fModule> {
-    let (rest, (client, server, subject, app, lang, params, raw_sig)) = tuple((
-        parse_cli,
-        parse_srv,
-        parse_subj,
-        parse_app,
-        parse_lang,
-        parse_params,
-        parse_raw_sig,
-    ))(i)?;
+fn parse_p0f_http_response(i: &str) -> IResult<&str, P0fModule> {
+    let (rest, (app, lang, params, raw_sig)) =
+        tuple((parse_app, parse_lang, parse_params, parse_raw_sig))(i)?;
 
     Ok((
         rest,
         P0fModule::HttpResponse {
-            client: String::from(client),
-            server: String::from(server),
-            subject: String::from(subject),
             app: String::from(app),
             lang: String::from(lang),
             params: String::from(params),
@@ -239,23 +211,30 @@ pub fn parse_p0f_http_response(i: &str) -> IResult<&str, P0fModule> {
 }
 
 pub fn parse_line(i: &str) -> IResult<&str, P0f> {
-    let (rest, date) = parse_date(i)?;
-    let (rest, module) = match parse_mod(rest)? {
-        (remain, "uptime") => parse_p0f_uptime(remain)?,
-        (remain, "mtu") => parse_p0f_mtu(remain)?,
-        (remain, "syn") => parse_p0f_syn(remain)?,
-        (remain, "syn+ack") => parse_p0f_synack(remain)?,
-        (remain, "host change") => parse_p0f_host_change(remain)?,
-        (remain, "http request") => parse_p0f_http_request(remain)?,
-        (remain, "http response") => parse_p0f_http_response(remain)?,
-        (remain, module) => (
-            "",
-            P0fModule::Unparsed {
-                module: String::from(module),
-                remain: String::from(remain),
-            },
-        ),
+    let (remain, (date, module, client, server, subject)) =
+        tuple((parse_date, parse_mod, parse_cli, parse_srv, parse_subj))(i)?;
+
+    let (rest, module) = match module {
+        "uptime" => parse_p0f_uptime(remain)?,
+        "mtu" => parse_p0f_mtu(remain)?,
+        "syn" => parse_p0f_syn(remain)?,
+        "syn+ack" => parse_p0f_synack(remain)?,
+        "host change" => parse_p0f_host_change(remain)?,
+        "http request" => parse_p0f_http_request(remain)?,
+        "http response" => parse_p0f_http_response(remain)?,
+        _ => {
+            return Err(Error::make_nom_error(remain, nom::error::ErrorKind::NoneOf));
+        }
     };
 
-    Ok((rest, P0f { date, module }))
+    Ok((
+        rest,
+        P0f {
+            date,
+            client,
+            server,
+            subject,
+            module,
+        },
+    ))
 }

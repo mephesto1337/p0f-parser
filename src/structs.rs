@@ -1,59 +1,52 @@
+use std::net::IpAddr;
+
 pub type DateTime = chrono::NaiveDateTime;
+
+#[derive(Debug)]
+pub struct Endpoint {
+    pub addr: IpAddr,
+    pub port: u16,
+}
+
+#[derive(Debug)]
+pub enum Subject {
+    Client,
+    Server,
+}
 
 #[derive(Debug)]
 pub enum P0fModule {
     Uptime {
-        client: String,
-        server: String,
-        subject: String,
         uptime: String,
         raw_freq: String,
     },
     Mtu {
-        client: String,
-        server: String,
-        subject: String,
         link: String,
         raw_mtu: usize,
     },
     Syn {
-        client: String,
-        server: String,
-        subject: String,
         os: String,
         dist: String,
         params: String,
         raw_sig: String,
     },
     SynAck {
-        client: String,
-        server: String,
-        subject: String,
         os: String,
         dist: String,
         params: String,
         raw_sig: String,
     },
     HostChange {
-        client: String,
-        server: String,
-        subject: String,
         reason: String,
         raw_hits: String,
     },
     HttpRequest {
-        client: String,
-        server: String,
-        subject: String,
         app: String,
         lang: String,
         params: String,
         raw_sig: String,
     },
     HttpResponse {
-        client: String,
-        server: String,
-        subject: String,
         app: String,
         lang: String,
         params: String,
@@ -69,4 +62,7 @@ pub enum P0fModule {
 pub struct P0f {
     pub date: DateTime,
     pub module: P0fModule,
+    pub client: Endpoint,
+    pub server: Endpoint,
+    pub subject: Subject,
 }

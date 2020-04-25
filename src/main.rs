@@ -1,17 +1,19 @@
-extern crate p0f_parser;
-use p0f_parser::parsers::parse_line;
+use std::env;
 use std::fs::File;
 use std::io::{BufRead, BufReader, Error};
 
+use p0f_parser::parse_line;
+
 fn main() -> Result<(), Error> {
-    let path = "/var/tmp/p0f.log";
+    let path = env::args().skip(1).next().unwrap_or("./p0f.log".to_owned());
     let logfile = File::open(path)?;
     let reader = BufReader::new(logfile);
 
-    for (_num, line) in reader.lines().enumerate() {
-        let mut l = line.unwrap();
-        let r = parse_line(&mut l);
-        println!("{:?}", r);
+    for line in reader.lines() {
+        match parse_line(&line?) {
+            Ok((_rest, p0f)) => println!("{:#?}", p0f),
+            Err(e) => eprintln!("{:?}", e),
+        }
     }
     Ok(())
 }

@@ -63,3 +63,9 @@ impl<I> nom::error::ParseError<I> for Error<I> {
         Self::Parse((input, kind))
     }
 }
+
+impl<I> Error<I> {
+    pub fn make_nom_error(i: I, kind: nom::error::ErrorKind) -> nom::Err<Self> {
+        return nom::Err::Error(Self::Parse((i, kind)));
+    }
+}
