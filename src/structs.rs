@@ -1,4 +1,5 @@
 use std::net::IpAddr;
+use std::time::Duration;
 
 pub type DateTime = chrono::NaiveDateTime;
 
@@ -17,7 +18,7 @@ pub enum Subject {
 #[derive(Debug)]
 pub enum P0fModule {
     Uptime {
-        uptime: String,
+        uptime: Uptime,
         raw_freq: String,
     },
     Mtu {
@@ -65,4 +66,10 @@ pub struct P0f {
     pub client: Endpoint,
     pub server: Endpoint,
     pub subject: Subject,
+}
+
+#[derive(Debug)]
+pub struct Uptime {
+    pub duration: Duration,
+    pub modulo: Duration,
 }

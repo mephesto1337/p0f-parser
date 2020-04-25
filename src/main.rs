@@ -11,7 +11,7 @@ fn main() -> Result<(), Error> {
 
     for line in reader.lines() {
         match parse_line(&line?) {
-            Ok((_rest, p0f)) => println!("{:#?}", p0f),
+            Ok((_rest, p0f)) => println!("{:?}", p0f),
             Err(e) => eprintln!("{:?}", e),
         }
     }

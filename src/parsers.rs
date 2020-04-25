@@ -1,12 +1,13 @@
 use std::net::IpAddr;
+use std::time::Duration;
 
 use nom::bytes::complete::{is_not, tag, take_until};
-use nom::character::complete::{char, digit1};
+use nom::character::complete::{char, digit1, space0, space1};
 use nom::combinator::map_res;
 use nom::sequence::{delimited, preceded, tuple};
 
 use crate::error::Error;
-use crate::structs::{DateTime, Endpoint, P0f, P0fModule, Subject};
+use crate::structs::{DateTime, Endpoint, P0f, P0fModule, Subject, Uptime};
 
 type IResult<I, O> = nom::IResult<I, O, Error<I>>;
 
@@ -68,8 +69,33 @@ fn parse_params(i: &str) -> IResult<&str, &str> {
     parse_tag(i, "params")
 }
 
-fn parse_uptime(i: &str) -> IResult<&str, &str> {
-    parse_tag(i, "uptime")
+fn parse_uptime(i: &str) -> IResult<&str, Uptime> {
+    let space_tag = |t: &'static str| tuple((space0, tag(t), space1));
+    let mut duration = Duration::from_secs(0);
+
+    let (rest, uptime) = parse_tag(i, "uptime")?;
+    let (_, (days, _, hours, _, minutes, _, modulo, _)) = tuple((
+        map_res(digit1, |s: &str| s.parse::<u64>()),
+        space_tag("days"),
+        map_res(digit1, |s: &str| s.parse::<u64>()),
+        space_tag("hrs"),
+        map_res(digit1, |s: &str| s.parse::<u64>()),
+        space_tag("min (modulo"),
+        map_res(digit1, |s: &str| s.parse::<u64>()),
+        space_tag("days)"),
+    ))(uptime)?;
+
+    duration += Duration::from_secs(minutes * 60);
+    duration += Duration::from_secs(hours * 3600);
+    duration += Duration::from_secs(days * 86400);
+
+    Ok((
+        rest,
+        Uptime {
+            duration,
+            modulo: Duration::from_secs(modulo * 86400),
+        },
+    ))
 }
 
 fn parse_link(i: &str) -> IResult<&str, &str> {
@@ -120,7 +146,7 @@ fn parse_p0f_uptime(i: &str) -> IResult<&str, P0fModule> {
     Ok((
         rest,
         P0fModule::Uptime {
-            uptime: String::from(uptime),
+            uptime,
             raw_freq: String::from(raw_freq),
         },
     ))

@@ -1,12 +1,14 @@
 use std::convert::From;
 use std::fmt;
 use std::io;
+use std::net;
 use std::num;
 
 #[derive(Debug)]
 pub enum Error<I> {
     Io(io::Error),
     Num(num::ParseIntError),
+    IpAddr(net::AddrParseError),
     DateTime(chrono::format::ParseError),
     Parse((I, nom::error::ErrorKind)),
     Other(Box<dyn std::error::Error>),
@@ -21,6 +23,12 @@ impl<I> From<io::Error> for Error<I> {
 impl<I> From<num::ParseIntError> for Error<I> {
     fn from(e: num::ParseIntError) -> Self {
         Self::Num(e)
+    }
+}
+
+impl<I> From<net::AddrParseError> for Error<I> {
+    fn from(e: net::AddrParseError) -> Self {
+        Self::IpAddr(e)
     }
 }
 
@@ -47,6 +55,7 @@ impl<I> fmt::Display for Error<I> {
         match self {
             Self::Io(ref e) => write!(f, "{}", e),
             Self::Num(ref e) => write!(f, "{}", e),
+            Self::IpAddr(ref e) => write!(f, "{}", e),
             Self::DateTime(ref e) => write!(f, "{}", e),
             Self::Parse((_, kind)) => write!(f, "{:?}", kind),
             Self::Other(e) => write!(f, "{}", e),
