@@ -2,7 +2,7 @@ use std::net::IpAddr;
 use std::time::Duration;
 
 use nom::bytes::complete::{is_not, tag, take_until};
-use nom::character::complete::{char, digit1, space0, space1};
+use nom::character::complete::{char, digit1, space0};
 use nom::combinator::map_res;
 use nom::sequence::{delimited, preceded, tuple};
 
@@ -70,7 +70,7 @@ fn parse_params(i: &str) -> IResult<&str, &str> {
 }
 
 fn parse_uptime(i: &str) -> IResult<&str, Uptime> {
-    let space_tag = |t: &'static str| tuple((space0, tag(t), space1));
+    let space_tag = |t: &'static str| tuple((space0, tag(t), space0));
     let mut duration = Duration::from_secs(0);
 
     let (rest, uptime) = parse_tag(i, "uptime")?;
