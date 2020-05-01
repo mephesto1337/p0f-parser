@@ -13,10 +13,17 @@ fn main() -> Result<(), io::Error> {
         let line = line?;
         match parse_line(&line) {
             Ok((_rest, p0f)) => println!("{:?}", p0f),
-            Err(e) => {
-                eprintln!("{}, {:?}", line, &e);
-                return Err(io::Error::new(io::ErrorKind::Other, format!("{:?}", e)));
-            }
+            Err(ref e) => match e {
+                nom::Err::Failure(f) => {
+                    return Err(io::Error::new(io::ErrorKind::Other, format!("{:?}", f)));
+                }
+                nom::Err::Error(e) => {
+                    eprintln!("Error: {:?} at {}", e, line);
+                }
+                nom::Err::Incomplete(n) => {
+                    eprintln!("Incomplete line, need {:?}", n);
+                }
+            },
         }
     }
     Ok(())
